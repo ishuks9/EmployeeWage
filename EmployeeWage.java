@@ -1,16 +1,18 @@
 public class EmployeeWage{
-                public static final int is_Part_Time = 1;
-                public static final int is_Full_Time = 2;
-		public static final int no_of_workingDays = 20;
-		public static final int Max_hrs = 100;
-	public static void main(String args[]){
-		System.out.println("Welcome to EmpWage");
+	public static final int is_Part_Time = 1;
+	public static final int is_Full_Time = 2;
+	public static final int no_of_workingDays = 20;
+	public static final int wagePerhr = 20;
+	public static final int Max_hrs = 100;
+
+	public static int calcEmp(String company, int empRate, int numOfDays, int maxHrs){
+		System.out.println("Welcome to Employee Wage");
 		int totalEmpWage = 0;
 		int wagePerhr = 20;
 		int empHrs = 0;
 		int totalEmpHrs = 0;
 		int totalWorkingDays = 0;
-                while(totalEmpHrs <= Max_hrs && totalWorkingDays < no_of_workingDays){
+      while(totalEmpHrs <= maxHrs && totalWorkingDays < numOfDays){
 			totalWorkingDays++;
 			int check =(int) Math.floor(Math.random()*10)%3;
 			switch(check){
@@ -24,10 +26,16 @@ public class EmployeeWage{
 				empHrs = 0;
 			}
 			totalEmpHrs += empHrs;
-                        System.out.println("Days: "+totalWorkingDays + " Emp Hrs: " + empHrs);
+			System.out.println("Days: "+totalWorkingDays + " Emp Hrs: " + empHrs);
 		}
-		totalEmpWage = totalEmpHrs * wagePerhr;
-		System.out.println("Total EmpWage: "+totalEmpWage);
+		totalEmpWage = totalEmpHrs * empRate;
+		System.out.println("Total EmpWage for company: "+company+" is "+totalEmpWage);
+		return totalEmpWage;
+	}
+
+	public static void main(String args[]){
+	calcEmp("Capgemini", 20, 20, 10);
+	calcEmp("TCS", 10, 20, 20);
 	}
 }
 
